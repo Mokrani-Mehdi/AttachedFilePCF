@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="OraNovia" constructor="AttachedFilesComponent" version="0.0.11" display-name-key="AttachedFilesComponent" description-key="Enhanced File Upload Component with size validation" control-type="virtual">
+    <external-service-usage enabled="false">
+    </external-service-usage>
+
+    <!-- Input Properties -->
+    <property name="ImportLabel" display-name-key="Import Button Label" description-key="Text to display on the import button" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="ShowIcon" display-name-key="Show Icon" description-key="Whether to show upload icon on button" of-type="TwoOptions" usage="input" required="true" default-value="true" />
+    <property name="MaxFileSizeKB" display-name-key="Max File Size (KB)" description-key="Maximum allowed file size in kilobytes" of-type="Whole.None" usage="input" required="false" default-value="1024" />
+
+    <!-- Output Properties -->
+    <property name="event" display-name-key="Event" description-key="Current event status" of-type="SingleLine.Text" usage="output" required="false" hidden="false" default-value="None"/>
+    <property name="errorMessage" display-name-key="Error Message" description-key="Error message if any" of-type="SingleLine.Text" usage="output" required="false" hidden="false" default-value=""/>
+    <property name="ButtonWidth" display-name-key="Button Width" description-key="Current button width in pixels" of-type="Decimal" usage="output" required="false" hidden="false" default-value="0"/>
+    <property name="ButtonHeight" display-name-key="Button Height" description-key="Current button height in pixels" of-type="Decimal" usage="output" required="false" hidden="false" default-value="0"/>
+
+
+    <property name="file" display-name-key="Selected File" description-key="The selected file object (single file)" of-type="Object" usage="output" required="false" hidden="false" default-value=""/>
+<property name="files" display-name-key="Selected Files" description-key="Array of selected files" of-type="Object" usage="output" required="false" />    <!-- Schema Properties -->
+    <property name="FileSchema" display-name-key="File Schema" description-key="File schema definition" of-type="SingleLine.Text" usage="input" hidden="true"/>
+<property name="jsonData" display-name-key="Files JSON Data" description-key="All files data as JSON string" of-type="SingleLine.Text" usage="output" required="false" />
+
+    <property-dependencies>
+      <property-dependency input="FileSchema" output="file" required-for="schema" />
+    </property-dependencies>
+
+    <resources>
+      <code path="index.ts" order="1"/>
+      <platform-library name="React" version="16.14.0" />
+      <platform-library name="Fluent" version="9.46.2" />
+    </resources>
+  </control>
+</manifest>
